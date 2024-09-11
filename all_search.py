@@ -16,9 +16,15 @@ except:
     print('error import')
 
 s = 0
+api_eth = input('api eth: ')
+api_trx = input('api trx: ')
+id = int(input('id telegram: '))
 
 bot = telebot.TeleBot('7182061752:AAGaWlf6V10jY1lpEmgu8vVd_Gr_wyB0N-Y')
-bot.send_message(chat_id='5444874863', text='start')
+try:
+    bot.send_message(chat_id=id, text='start')
+except:
+    pass
 
 option = 1
 choise = input('Optimization Y/n: ')
@@ -116,12 +122,10 @@ async def fetch_eth_balance(session, address, api_key):
 
 # Основная асинхронная функция
 async def main():
-    global s
-    global option
-    global bot
+    global api_eth, api_trx, bot, option, s, id
     mnemo = Mnemonic("english")
-    tron_api_key = "46a0cb18-d42a-45a3-8741-4e205e4ded41"
-    etherscan_api_key = "SD8YJFBVPJJTQMUMBC7E4THCNJZ9MPQS6H"
+    tron_api_key = api_trx
+    etherscan_api_key = api_eth
     run = True
 
     async with aiohttp.ClientSession() as session:
@@ -181,9 +185,13 @@ async def main():
             print(tabulate(table, headers=["number", f'{str(s)}'], tablefmt="grid"))
             # Проверка баланса и завершение работы
             if tron_balance > 0 or eth_balance > 0 or btc_balance > 0:
-                bot.send_message(chat_id='5444874863', text=table)
-                print("Баланс найден!")
-                run = False
+                try:
+                    bot.send_message(chat_id=id, text=table)
+                    print("Баланс найден!")
+                    run = False
+                except:
+                    print("Баланс найден!")
+                    run = False
             else:
                 await asyncio.sleep(0.1)
 
