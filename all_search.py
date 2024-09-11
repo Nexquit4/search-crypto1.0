@@ -15,8 +15,8 @@ except:
     print('error import')
 
 s = 0
-api_eth = "SD8YJFBVPJJTQMUMBC7E4THCNJZ9MPQS6H"
-api_trx = "46a0cb18-d42a-45a3-8741-4e205e4ded41"
+api_eth = input("api eth: ")
+api_trx = input("api trx: ")
 
 option = 1
 choise = input('Optimization Y/n: ')
