@@ -2,8 +2,7 @@ asyncio
 aiohttp
 mnemonic
 tronpy
-bip32utils
-hashlib
+bip32utils
 bech32
 requests
 eth_account
