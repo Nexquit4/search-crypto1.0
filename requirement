@@ -2,10 +2,9 @@ asyncio
 aiohttp
 mnemonic
 tronpy
-bip32utils
+bip32utils
 bech32
-requests
 eth_account
 binascii
 tabulate
-telebot
+base58
